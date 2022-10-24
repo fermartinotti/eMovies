@@ -1,0 +1,6 @@
+framework module Pods_rappiMovies {
+  umbrella header "Pods-rappiMovies-umbrella.h"
+
+  export *
+  module * { export * }
+}
