@@ -18,11 +18,17 @@ protocol GetGenresDAODelegate : AnyObject{
     func getGenresFailure()
 }
 
+protocol GetVideosDAODelegate: AnyObject{
+    func getVideosSuccess(response: VideosResponse)
+    func getVideosFailure()
+}
+
 
 class MoviesDao {
     
     weak var getMoviesDelegate: GetMoviesDAODelegate?
     weak var getGenresDelegate: GetGenresDAODelegate?
+    weak var getVideosDelegate: GetVideosDAODelegate?
     
     private var apikey : String{
         get {
@@ -71,6 +77,20 @@ class MoviesDao {
                     // TODO: FALTA GUARDAR EN COREDATA
                 case .failure(let error):
                     self.getGenresDelegate?.getGenresFailure()
+                }
+            }
+    }
+    
+    func getVideos(movieId: String){
+        AF.request("https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=\(apikey)&language=en-US", method: .get)
+            .validate()
+            .responseDecodable(of: VideosResponse.self) { (response) in
+                switch response.result{
+                case .success(let videos):
+                    self.getVideosDelegate?.getVideosSuccess(response: videos)
+                    // TODO: FALTA GUARDAR EN COREDATA
+                case .failure(let error):
+                    self.getVideosDelegate?.getVideosFailure()
                 }
             }
     }

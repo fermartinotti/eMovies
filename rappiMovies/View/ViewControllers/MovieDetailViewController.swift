@@ -20,6 +20,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var yearButton: UIButton!
     @IBOutlet weak var languageButton: UIButton!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
+    @IBOutlet weak var playMovieActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var playVideoButton: TransparentButton!
+    
+    private var videoKey:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,9 +140,32 @@ class MovieDetailViewController: UIViewController {
     }
 
     @IBAction func playVideoPressed(_ sender: Any) {
-        
-        // https://www.youtube.com/watch?v=UH0KeoB72zs
-        guard let videoURL = URL(string: "https://www.youtube.com/watch?v=UH0KeoB72zs") else { return }
+        let dao = MoviesDao()
+        dao.getVideosDelegate = self
+        if let movieId = movie?.id{
+            startLoading()
+            dao.getVideos(movieId: String(movieId))
+        }
+    }
+    
+    //MARK: Animation in "Ver trailer" Button.
+    private func startLoading(){
+        playVideoButton.titleLabel?.isHidden = true
+        playMovieActivityIndicator.startAnimating()
+    }
+    
+    private func stopLoading(){
+        playMovieActivityIndicator.stopAnimating()
+        playVideoButton.titleLabel?.isHidden = false
+    }
+    
+    //MARK: prepare segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToVideoPlayer"{
+            let destination = segue.destination as! VideoPlayerViewController
+            destination.videoKey = videoKey
+            //TODO: CAMBIAR POR LA KEY REAL.
+        }
     }
 }
 
@@ -170,6 +197,36 @@ extension MovieDetailViewController : GetGenresDAODelegate {
     
     func getGenresFailure() {
         genderLabel.removeFromSuperview()
+    }
+    
+    
+}
+
+extension MovieDetailViewController: GetVideosDAODelegate{
+    func getVideosSuccess(response: VideosResponse) {
+        stopLoading()
+        if response.results.isEmpty{
+            showVideoError()
+        }else{
+            let videos = response.results
+            if let video = videos.first(where: {$0.site == "YouTube"}){
+                self.videoKey = video.key
+                performSegue(withIdentifier: "GoToVideoPlayer", sender: self)
+            }else{
+                showVideoError()
+            }
+        }
+            
+    }
+    
+    func getVideosFailure() {
+        showVideoError()
+    }
+    
+    private func showVideoError(){
+        let alert = UIAlertController(title: "Ups!", message: "No encontramos ningun trailer para mostrar en este momento.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default,handler: nil))
+        self.present(alert,animated: true,completion: nil)
     }
     
     

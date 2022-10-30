@@ -162,9 +162,14 @@
                                                         </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-Z6-4KA">
+                                                        <rect key="frame" x="160" y="180.33333333333337" width="20" height="20"/>
+                                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="Fev-Z6-4KA" firstAttribute="centerX" secondItem="q7n-3W-0bx" secondAttribute="centerX" id="0y4-YX-5je"/>
                                                     <constraint firstItem="Rbc-qJ-Uco" firstAttribute="centerX" secondItem="qme-43-bC7" secondAttribute="centerX" id="4PD-J8-jmq"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZLc-e0-z8Y" secondAttribute="trailing" id="6Dh-lk-lNn"/>
                                                     <constraint firstAttribute="trailing" secondItem="9Wu-An-1P0" secondAttribute="trailing" id="6Yc-ab-nqO"/>
@@ -179,6 +184,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="q7n-3W-0bx" secondAttribute="trailing" id="qGd-bN-xc6"/>
                                                     <constraint firstItem="q7n-3W-0bx" firstAttribute="top" secondItem="ZLc-e0-z8Y" secondAttribute="bottom" constant="25" id="tOf-3K-VdI"/>
                                                     <constraint firstAttribute="trailing" secondItem="n62-Yb-cdR" secondAttribute="trailing" id="uI6-OH-Cy3"/>
+                                                    <constraint firstItem="Fev-Z6-4KA" firstAttribute="centerY" secondItem="q7n-3W-0bx" secondAttribute="centerY" id="vBP-BU-Qwb"/>
                                                     <constraint firstAttribute="trailing" secondItem="Rbc-qJ-Uco" secondAttribute="trailing" id="vWK-ks-pJj"/>
                                                     <constraint firstItem="Rbc-qJ-Uco" firstAttribute="top" secondItem="qme-43-bC7" secondAttribute="top" id="zdc-eO-s0L"/>
                                                 </constraints>
@@ -221,15 +227,58 @@
                         <outlet property="genderLabel" destination="ZLc-e0-z8Y" id="0aJ-L7-WzF"/>
                         <outlet property="languageButton" destination="1lj-68-Ehc" id="zQf-jI-KtP"/>
                         <outlet property="movieDescriptionLabel" destination="n62-Yb-cdR" id="bFB-JN-Uje"/>
+                        <outlet property="playMovieActivityIndicator" destination="Fev-Z6-4KA" id="jvb-Qr-SSD"/>
+                        <outlet property="playVideoButton" destination="q7n-3W-0bx" id="1se-2c-UCv"/>
                         <outlet property="posterImageView" destination="lH2-6C-fYz" id="FNx-nu-ryo"/>
                         <outlet property="ratingButton" destination="lhj-dN-hTY" id="5hc-MI-bXH"/>
                         <outlet property="titleLabel" destination="Rbc-qJ-Uco" id="OTf-87-RVa"/>
                         <outlet property="yearButton" destination="g18-Wu-m3z" id="BVv-y2-ybw"/>
+                        <segue destination="GQe-zM-Vkh" kind="show" identifier="GoToVideoPlayer" id="hkZ-Jl-Ir8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOJ-QT-g0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1013.8461538461538" y="-31.279620853080566"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="RJ6-j4-Wsj">
+            <objects>
+                <viewController id="GQe-zM-Vkh" customClass="VideoPlayerViewController" customModule="rappiMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wgo-Uf-Xxd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-Fl-Ydg" customClass="YTPlayerView">
+                                <rect key="frame" x="45" y="337.66666666666669" width="300" height="168.66666666666669"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1AA-SS-S3X"/>
+                                    <constraint firstAttribute="width" secondItem="3O5-Fl-Ydg" secondAttribute="height" multiplier="16:9" id="vEE-qE-3nm"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="YJW-og-azz">
+                                <rect key="frame" x="176.66666666666666" y="403.66666666666669" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lj1-mt-h0P"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YJW-og-azz" firstAttribute="centerY" secondItem="wgo-Uf-Xxd" secondAttribute="centerY" id="Lpc-of-Qyq"/>
+                            <constraint firstItem="3O5-Fl-Ydg" firstAttribute="centerY" secondItem="wgo-Uf-Xxd" secondAttribute="centerY" id="S6T-JL-TKD"/>
+                            <constraint firstItem="YJW-og-azz" firstAttribute="centerX" secondItem="wgo-Uf-Xxd" secondAttribute="centerX" id="ScS-Gv-YD8"/>
+                            <constraint firstItem="3O5-Fl-Ydg" firstAttribute="centerX" secondItem="wgo-Uf-Xxd" secondAttribute="centerX" id="bE4-DI-D8w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TOm-NT-3Ri"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="YJW-og-azz" id="HAk-ex-zFn"/>
+                        <outlet property="playerView" destination="3O5-Fl-Ydg" id="2Un-qT-UVy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMP-3p-elW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="-31"/>
         </scene>
     </scenes>
     <resources>

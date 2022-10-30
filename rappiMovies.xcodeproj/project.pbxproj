@@ -14,6 +14,7 @@
 		E83FF65228FF7D7B00947D60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E83FF65028FF7D7B00947D60 /* Main.storyboard */; };
 		E83FF65428FF7D7F00947D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E83FF65328FF7D7F00947D60 /* Assets.xcassets */; };
 		E83FF65728FF7D7F00947D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E83FF65528FF7D7F00947D60 /* LaunchScreen.storyboard */; };
+		E859DEFC290EF82A00AE6197 /* VideosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859DEFB290EF82A00AE6197 /* VideosResponse.swift */; };
 		E86041212904B155006241CE /* MoviesSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860411F2904B155006241CE /* MoviesSectionTableViewCell.swift */; };
 		E86041222904B155006241CE /* MoviesSectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86041202904B155006241CE /* MoviesSectionTableViewCell.xib */; };
 		E86041242904BBF0006241CE /* MoviesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86041232904BBF0006241CE /* MoviesSection.swift */; };
@@ -28,6 +29,8 @@
 		E8D6B44E290759B300878E63 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6B44D290759B300878E63 /* UIButton+Extensions.swift */; };
 		E8D6B450290C8E2000878E63 /* TransparentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6B44F290C8E2000878E63 /* TransparentButton.swift */; };
 		E8D6B452290DEEE200878E63 /* GenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6B451290DEEE200878E63 /* GenresResponse.swift */; };
+		E8D6B454290E1A1A00878E63 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6B453290E1A1A00878E63 /* VideoPlayerViewController.swift */; };
+		E8D6B456290E25E700878E63 /* BlurEffectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6B455290E25E700878E63 /* BlurEffectHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,7 @@
 		E83FF65328FF7D7F00947D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E83FF65628FF7D7F00947D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E83FF65828FF7D7F00947D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E859DEFB290EF82A00AE6197 /* VideosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosResponse.swift; sourceTree = "<group>"; };
 		E860411F2904B155006241CE /* MoviesSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSectionTableViewCell.swift; sourceTree = "<group>"; };
 		E86041202904B155006241CE /* MoviesSectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesSectionTableViewCell.xib; sourceTree = "<group>"; };
 		E86041232904BBF0006241CE /* MoviesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSection.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		E8D6B44D290759B300878E63 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		E8D6B44F290C8E2000878E63 /* TransparentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentButton.swift; sourceTree = "<group>"; };
 		E8D6B451290DEEE200878E63 /* GenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponse.swift; sourceTree = "<group>"; };
+		E8D6B453290E1A1A00878E63 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		E8D6B455290E25E700878E63 /* BlurEffectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,7 @@
 			children = (
 				E80B245B2900C63100658CF6 /* HomeViewController.swift */,
 				E860412B2905C053006241CE /* MovieDetailViewController.swift */,
+				E8D6B453290E1A1A00878E63 /* VideoPlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			children = (
 				E860412F2905D335006241CE /* GoToMovieDetailAnimator.swift */,
 				E86041312905D343006241CE /* GoToMovieDetailSegue.swift */,
+				E8D6B455290E25E700878E63 /* BlurEffectHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -208,6 +216,7 @@
 			children = (
 				E8D046C7290193D80079C15D /* MoviesResponse.swift */,
 				E8D6B451290DEEE200878E63 /* GenresResponse.swift */,
+				E859DEFB290EF82A00AE6197 /* VideosResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -354,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E859DEFC290EF82A00AE6197 /* VideosResponse.swift in Sources */,
 				E83FF64B28FF7D7B00947D60 /* AppDelegate.swift in Sources */,
 				E86041212904B155006241CE /* MoviesSectionTableViewCell.swift in Sources */,
 				E8D6B450290C8E2000878E63 /* TransparentButton.swift in Sources */,
@@ -367,6 +377,8 @@
 				E86041322905D343006241CE /* GoToMovieDetailSegue.swift in Sources */,
 				E860412C2905C053006241CE /* MovieDetailViewController.swift in Sources */,
 				E8D6B452290DEEE200878E63 /* GenresResponse.swift in Sources */,
+				E8D6B456290E25E700878E63 /* BlurEffectHelper.swift in Sources */,
+				E8D6B454290E1A1A00878E63 /* VideoPlayerViewController.swift in Sources */,
 				E86041282904E9CB006241CE /* MovieCollectionViewCell.swift in Sources */,
 				E8D6B44E290759B300878E63 /* UIButton+Extensions.swift in Sources */,
 			);

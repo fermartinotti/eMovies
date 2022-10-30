@@ -9,5 +9,6 @@ target 'rappiMovies' do
 
 pod 'Kingfisher'
 pod 'Alamofire'
+pod 'youtube-ios-player-helper'
 
 end
