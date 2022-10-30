@@ -30,7 +30,7 @@ class MoviesSectionTableViewCell: UITableViewCell {
 
     func configureCell(type: SectionType){
         let dao = MoviesDao()
-        dao.getUpcomingMoviesDelegate = self
+        dao.getMoviesDelegate = self
         switch type{
         case .upcoming:
             sectionTitleLabel.text = "Próximos estrenos"
@@ -43,36 +43,22 @@ class MoviesSectionTableViewCell: UITableViewCell {
     
 }
 
-extension MoviesSectionTableViewCell: GetUpcomingMoviesDAODelegate{
-    func getUpcomingMoviesSuccess(movies: MoviesResponse) {
+extension MoviesSectionTableViewCell: GetMoviesDAODelegate{
+    
+    func getMoviesSuccess(movies: MoviesResponse) {
         if let results = movies.results{
             self.movies = results
         }
         moviesCollectionView.reloadData()
     }
     
-    func getUpcomingMoviesFailre() {
+    func getMoviesFailure() {
         //TODO: Cambiar y manejar apropiadamente
         print("error al obtener datos")
     }
     
 }
-
-extension MoviesSectionTableViewCell: GetTopRatedMoviesDAODelegate{
-    func getTopRatedMoviesSuccess(movies: MoviesResponse) {
-        if let results = movies.results{
-            self.movies = results
-        }
-        moviesCollectionView.reloadData()
-    }
     
-    func getTopRatedMoviesFailre() {
-        //TODO: Cambiar y manejar apropiadamente
-    }
-    
-    
-}
-
 extension MoviesSectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

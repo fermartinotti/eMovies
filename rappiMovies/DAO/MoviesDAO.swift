@@ -8,21 +8,21 @@
 import Foundation
 import Alamofire
 
-protocol GetUpcomingMoviesDAODelegate : AnyObject{
-    func getUpcomingMoviesSuccess(movies: MoviesResponse)
-    func getUpcomingMoviesFailre()
+protocol GetMoviesDAODelegate : AnyObject{
+    func getMoviesSuccess(movies: MoviesResponse)
+    func getMoviesFailure()
 }
 
-protocol GetTopRatedMoviesDAODelegate : AnyObject{
-    func getTopRatedMoviesSuccess(movies: MoviesResponse)
-    func getTopRatedMoviesFailre()
+protocol GetGenresDAODelegate : AnyObject{
+    func getGenresSuccess(response: GenresResponse)
+    func getGenresFailure()
 }
-
 
 
 class MoviesDao {
     
-    weak var getUpcomingMoviesDelegate: GetUpcomingMoviesDAODelegate?
+    weak var getMoviesDelegate: GetMoviesDAODelegate?
+    weak var getGenresDelegate: GetGenresDAODelegate?
     
     private var apikey : String{
         get {
@@ -37,11 +37,11 @@ class MoviesDao {
             .responseDecodable(of: MoviesResponse.self) { (response) in
                 switch response.result{
                 case .success(let movies):
-                    self.getUpcomingMoviesDelegate?.getUpcomingMoviesSuccess(movies: movies)
+                    self.getMoviesDelegate?.getMoviesSuccess(movies: movies)
                     // TODO: FALTA GUARDAR EN COREDATA
                 case .failure(let error):
                     print(error)
-                    self.getUpcomingMoviesDelegate?.getUpcomingMoviesFailre()
+                    self.getMoviesDelegate?.getMoviesFailure()
                 }
             }
     }
@@ -52,11 +52,25 @@ class MoviesDao {
             .responseDecodable(of: MoviesResponse.self) { (response) in
                 switch response.result{
                 case .success(let movies):
-                    self.getUpcomingMoviesDelegate?.getUpcomingMoviesSuccess(movies: movies)
+                    self.getMoviesDelegate?.getMoviesSuccess(movies: movies)
                     // TODO: FALTA GUARDAR EN COREDATA
                 case .failure(let error):
                     print(error)
-                    self.getUpcomingMoviesDelegate?.getUpcomingMoviesFailre()
+                    self.getMoviesDelegate?.getMoviesFailure()
+                }
+            }
+    }
+    
+    func getGenres(){
+        AF.request("https://api.themoviedb.org/3/genre/movie/list?api_key=\(apikey)&language=en-US", method: .get)
+            .validate()
+            .responseDecodable(of: GenresResponse.self) { (response) in
+                switch response.result{
+                case .success(let genres):
+                    self.getGenresDelegate?.getGenresSuccess(response: genres)
+                    // TODO: FALTA GUARDAR EN COREDATA
+                case .failure(let error):
+                    self.getGenresDelegate?.getGenresFailure()
                 }
             }
     }
