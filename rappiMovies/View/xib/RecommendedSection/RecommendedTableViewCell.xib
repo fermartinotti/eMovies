@@ -25,6 +25,7 @@
                     </label>
                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-bm-HJG" customClass="GenericRoundUIButton" customModule="rappiMovies" customModuleProvider="target">
                         <rect key="frame" x="25" y="49" width="105" height="34"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
                         <state key="normal" title="En español"/>
                         <connections>

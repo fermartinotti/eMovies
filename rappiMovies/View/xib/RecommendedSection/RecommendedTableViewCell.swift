@@ -34,26 +34,19 @@ class RecommendedTableViewCell: UITableViewCell {
         dao.getMoviesDelegate = self
         dao.getTopRatedMovies()
         
-        inSpanishFilterButton.backgroundColor = .white
-        inSpanishFilterButton.setTitleColor(.black, for: .normal)
+        inSpanishFilterButton.isSelected = true
     }
     
     @IBAction func filterButtonPressed(_ sender: UIButton){
         switch sender.tag{
         case 1:
             //filtrar solo castellano
-            inSpanishFilterButton.backgroundColor = .white
-            inSpanishFilterButton.setTitleColor(.black, for: .normal)
-            
-            yearFilterButton.backgroundColor = .black
-            yearFilterButton.setTitleColor(.white, for: .normal)
+            inSpanishFilterButton.isSelected = true
+            yearFilterButton.isSelected = false
             self.filterMovies(filterType: .spanish)
         case 2:
-            inSpanishFilterButton.backgroundColor = .black
-            inSpanishFilterButton.setTitleColor(.white, for: .normal)
-            
-            yearFilterButton.backgroundColor = .white
-            yearFilterButton.setTitleColor(.black, for: .normal)
+            inSpanishFilterButton.isSelected = false
+            yearFilterButton.isSelected = true
             self.filterMovies(filterType: .year2016)
         default:
             print("default")

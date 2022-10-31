@@ -19,10 +19,10 @@ class GenericRoundUIButton : UIButton{
         self.backgroundColor = .black
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 12)
-        self.layer.cornerRadius = 21
+        self.layer.cornerRadius = 18
         self.layer.borderWidth = 0.75
         self.layer.borderColor = UIColor(red: 0.558, green: 0.558, blue: 0.558, alpha: 1).cgColor
-        
+        self.tintColor = .clear
         //TODO: revisar
 //        if #available(iOS 15.0, *) {
 //            self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 15, bottom: 8, trailing: 15)
@@ -32,18 +32,18 @@ class GenericRoundUIButton : UIButton{
         
     }
     
-//    override var isSelected: Bool{
-//        didSet{
-//            if isSelected{
-//                self.backgroundColor = .white
-//                self.setTitleColor(.black, for: .normal)
-//                //self.setTitleColor(.black, for: .normal)
-//            }else{
-//                self.backgroundColor = .black
-//                self.setTitleColor(.white, for: .normal)
-//            }
-//        }
-//    }
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                self.backgroundColor = .white
+                self.setTitleColor(.black, for: .selected)
+            }else{
+                self.backgroundColor = .black
+                self.setTitleColor(.white, for: .normal)
+            }
+
+        }
+    }
     
     override init(frame: CGRect){
         super.init(frame: frame)
