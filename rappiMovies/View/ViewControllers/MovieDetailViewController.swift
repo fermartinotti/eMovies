@@ -53,7 +53,7 @@ class MovieDetailViewController: UIViewController {
                 let stringDate = String(movieDate.prefix(4))
                 yearButton.setTitle(stringDate, for: .normal)
                 yearButton.SetDetailButton(color: UIColor(red: 1, green: 1, blue: 1, alpha: 0.8), size: 60, bold: true)
-                yearButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+                yearButton.widthAnchor.constraint(equalToConstant: 74).isActive = true
             }else{
                 yearButton.removeFromSuperview()
             }

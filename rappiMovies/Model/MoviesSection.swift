@@ -10,6 +10,7 @@ import Foundation
 enum SectionType {
     case upcoming
     case trending
+    case recommended
 }
 
 struct MoviesSection{

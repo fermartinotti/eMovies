@@ -19,10 +19,10 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureTableView()
         tableContent.append(MoviesSection(type: .upcoming))
         tableContent.append(MoviesSection(type: .trending))
+        tableContent.append(MoviesSection(type: .recommended))
         // Do any additional setup after loading the view.
     }
 }
@@ -33,6 +33,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         sectionsTableView.delegate = self
         sectionsTableView.dataSource = self
         sectionsTableView.register(UINib(nibName: "MoviesSectionTableViewCell", bundle: nil), forCellReuseIdentifier: "MoviesSectionTableViewCell")
+        sectionsTableView.register(UINib(nibName: "RecommendedTableViewCell", bundle: nil), forCellReuseIdentifier: "RecommendedTableViewCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,11 +52,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             cell.configureCell(type: .trending)
             cell.movieSectionSelectedCellDelegate = self
             return cell
+        case .recommended:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedTableViewCell", for: indexPath) as! RecommendedTableViewCell
+            cell.movieSectionSelectedCellDelegate = self
+            cell.configureCell()
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 235
+        switch tableContent[indexPath.row].type{
+        case .recommended:
+            return 570
+        default:
+            return 235
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
     }
     
 }

@@ -38,6 +38,8 @@ class MoviesSectionTableViewCell: UITableViewCell {
         case .trending:
             sectionTitleLabel.text = "Tendencia"
             dao.getTopRatedMovies()
+        default:
+            print("error")
         }
     }
     
