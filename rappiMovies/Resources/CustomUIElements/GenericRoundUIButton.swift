@@ -23,13 +23,6 @@ class GenericRoundUIButton : UIButton{
         self.layer.borderWidth = 0.75
         self.layer.borderColor = UIColor(red: 0.558, green: 0.558, blue: 0.558, alpha: 1).cgColor
         self.tintColor = .clear
-        //TODO: revisar
-//        if #available(iOS 15.0, *) {
-//            self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 15, bottom: 8, trailing: 15)
-//        } else {
-//            self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
-//        }
-        
     }
     
     override var isSelected: Bool{

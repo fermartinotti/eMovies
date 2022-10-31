@@ -233,7 +233,7 @@
                         <outlet property="ratingButton" destination="lhj-dN-hTY" id="5hc-MI-bXH"/>
                         <outlet property="titleLabel" destination="Rbc-qJ-Uco" id="OTf-87-RVa"/>
                         <outlet property="yearButton" destination="g18-Wu-m3z" id="BVv-y2-ybw"/>
-                        <segue destination="GQe-zM-Vkh" kind="show" identifier="GoToVideoPlayer" id="hkZ-Jl-Ir8"/>
+                        <segue destination="GQe-zM-Vkh" kind="presentation" identifier="GoToVideoPlayer" animates="NO" modalPresentationStyle="overCurrentContext" id="hkZ-Jl-Ir8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOJ-QT-g0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,7 +243,7 @@
         <!--Video Player View Controller-->
         <scene sceneID="RJ6-j4-Wsj">
             <objects>
-                <viewController id="GQe-zM-Vkh" customClass="VideoPlayerViewController" customModule="rappiMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="GQe-zM-Vkh" customClass="VideoPlayerViewController" customModule="rappiMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wgo-Uf-Xxd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,6 +260,25 @@
                                 <rect key="frame" x="176.66666666666666" y="403.66666666666669" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fZ-LC-VDj">
+                                <rect key="frame" x="325" y="297.66666666666669" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5Es-Fa-iHe"/>
+                                    <constraint firstAttribute="width" constant="20" id="Tb9-Gy-kHW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                <connections>
+                                    <action selector="closePressed:" destination="GQe-zM-Vkh" eventType="touchUpInside" id="mjM-9e-qL6"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A5a-07-VMo">
+                                <rect key="frame" x="325" y="297.66666666666669" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="3nd-u3-Sjh"/>
+                                    <constraint firstAttribute="height" constant="20" id="o11-2k-LuI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lj1-mt-h0P"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -267,12 +286,17 @@
                             <constraint firstItem="YJW-og-azz" firstAttribute="centerY" secondItem="wgo-Uf-Xxd" secondAttribute="centerY" id="Lpc-of-Qyq"/>
                             <constraint firstItem="3O5-Fl-Ydg" firstAttribute="centerY" secondItem="wgo-Uf-Xxd" secondAttribute="centerY" id="S6T-JL-TKD"/>
                             <constraint firstItem="YJW-og-azz" firstAttribute="centerX" secondItem="wgo-Uf-Xxd" secondAttribute="centerX" id="ScS-Gv-YD8"/>
+                            <constraint firstItem="A5a-07-VMo" firstAttribute="trailing" secondItem="3O5-Fl-Ydg" secondAttribute="trailing" id="a09-Xe-n5B"/>
                             <constraint firstItem="3O5-Fl-Ydg" firstAttribute="centerX" secondItem="wgo-Uf-Xxd" secondAttribute="centerX" id="bE4-DI-D8w"/>
+                            <constraint firstItem="0fZ-LC-VDj" firstAttribute="centerX" secondItem="A5a-07-VMo" secondAttribute="centerX" id="bn4-X5-agy"/>
+                            <constraint firstItem="0fZ-LC-VDj" firstAttribute="centerY" secondItem="A5a-07-VMo" secondAttribute="centerY" id="dY1-PQ-CHE"/>
+                            <constraint firstItem="3O5-Fl-Ydg" firstAttribute="top" secondItem="A5a-07-VMo" secondAttribute="bottom" constant="20" id="pa5-Je-paS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TOm-NT-3Ri"/>
                     <connections>
                         <outlet property="activityIndicator" destination="YJW-og-azz" id="HAk-ex-zFn"/>
+                        <outlet property="closeImageView" destination="A5a-07-VMo" id="LhU-qC-U4a"/>
                         <outlet property="playerView" destination="3O5-Fl-Ydg" id="2Un-qT-UVy"/>
                     </connections>
                 </viewController>
